@@ -47,9 +47,11 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
                 <select name="time" 
                 id="time"
                 onChange={handleChange}
-                value={credentials.time} >
-                    {availableTimes && availableTimes.map((aTime)=>
-                        <option>{aTime}</option>
+                value={credentials.time}
+                required >
+                    {availableTimes && <option value="" defaultChecked>Choose value</option>}
+                    {availableTimes && availableTimes.map((aTime, i)=>
+                        <option key={i} value={aTime}>{aTime}</option>
                     )}
                 </select>
                 <label for="guests">Number of guests</label>
