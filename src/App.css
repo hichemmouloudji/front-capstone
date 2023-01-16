@@ -1,6 +1,8 @@
 * {
   font-family: Monaco;
   background-color: #EDEFEE;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 header >img{
@@ -101,3 +103,10 @@ footer p {
   }
 
   }
+  
+.bookingForm{
+  display: grid; 
+  margin: auto;
+  max-width: 200px; 
+  gap: 20px;
+}

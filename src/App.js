@@ -11,6 +11,10 @@ import HomePage from './components/HomePage';
 import BookingPage from './components/BookingPage';
 import AboutPage from './components/AboutPage';
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
 
@@ -29,6 +33,8 @@ function App() {
           <Route path="/about" element={<AboutPage />}></Route>
         </Routes>
       </Main>
+
+      <ToastContainer />
 
       <Footer>
       </Footer>

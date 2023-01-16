@@ -1,11 +1,12 @@
 // @flow 
 import * as React from 'react';
+import BookingForm from './BookingForm';
 
 const BookingPage = () => {
     return (
-        <div>
-            
-        </div>
+        <React.Fragment>
+            <BookingForm></BookingForm>
+        </React.Fragment>
     );
 };
 
