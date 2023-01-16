@@ -6,6 +6,9 @@ import AboutPage from './AboutPage';
 import BookingPage from './BookingPage';
 import HomePage from './HomePage';
 
+import {fetchAPI} from "../api.js"; 
+import { toast } from 'react-toastify';
+
 const Main = ({children}) => {
 
     let initialTimes;
@@ -14,12 +17,12 @@ const Main = ({children}) => {
     switch (action.type) {
 
         case "INITIALIZE":
-        return ["17:00",
-        "18:00",
-        "19:00",
-        "20:00"];
+        return action.availableTimes;
 
         case "UPDATE":
+        return action.availableTimes;
+
+        case "SUBMIT":
         return state.filter(c  => c != action.time);
 
         default:
@@ -29,12 +32,28 @@ const Main = ({children}) => {
 
     const [availableTimes, dispatch] = useReducer(reducer, initialTimes);
 
-    const updateTimes = (time) => {
-        dispatch({ type: "UPDATE", time });
+    const updateTimes = async (time) => {
+        try{
+            let tmpAvailablesTimes= fetchAPI(time);
+            dispatch({ type: "UPDATE", availableTimes: tmpAvailablesTimes });
+        }catch{
+            toast.error("Retry later !");
+        }
+        
     };
 
-    const initializeTimes = () => {
-        dispatch({ type: "INITIALIZE" });
+    const bookTimes = (time) => {
+        dispatch({ type: "SUBMIT", time });
+    };
+
+    const initializeTimes = (time) => {
+        try{
+            let tmpAvailablesTimes= fetchAPI(time);
+            dispatch({ type: "INITIALIZE", availableTimes: tmpAvailablesTimes });
+        }catch{
+            toast.error("Retry later !");
+        }
+
     };
 
 
@@ -44,8 +63,9 @@ const Main = ({children}) => {
             <Route path="/" element={<HomePage />}></Route>
             <Route path="/booking" 
             element={<BookingPage availableTimes={availableTimes} 
-            updateTimes={updateTimes}
             initializeTimes={initializeTimes}
+            updateTimes={updateTimes}
+            bookTimes={bookTimes}
             />} ></Route>
             <Route path="/about" element={<AboutPage />}></Route>
             </Routes>

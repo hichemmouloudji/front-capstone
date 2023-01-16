@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { toast } from 'react-toastify';
 
-const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
+const BookingForm = ({availableTimes, updateTimes, bookTimes, initializeTimes}) => {
     
     const [credentials, setCredentials] = useState({
         date: "",
@@ -14,20 +14,38 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
     });
 
     useEffect(() =>{
-        initializeTimes();
+        let date= new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        if(month>0 && month<10){
+            month= "0"+month;
+        }
+        let year = date.getFullYear();
+
+        let todaysDate= year + "-" + month + "-" + day;
+
+        setCredentials({...credentials, date : todaysDate});
+        initializeTimes(date);
+        
     }, [])
 
     const [isSubmited, setIsubmited] = useState(false);
 
     const handleChange = ({currentTarget}) =>{
         const {value, name}= currentTarget;
+
         setCredentials({ ...credentials, [name]: value });
+
+        if(name === "date"){
+            let tmpDate= new Date(value);
+            updateTimes(tmpDate);
+        }
     }
 
     const handleSubmit =  async event =>{
 
         event.preventDefault();
-        updateTimes(credentials.time);
+        bookTimes(credentials.time);
 
         toast.success("Your table has been successfully reserved at: " + credentials.date);
 
@@ -35,7 +53,7 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
 
     return (
 
-        <React.Fragment className="booking">
+        <div className="booking">
 
         <h1>Book Now</h1>
         
@@ -81,7 +99,7 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
 
             </form>
 
-        </React.Fragment>
+        </div>
 
     );
 };
