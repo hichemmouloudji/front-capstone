@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-const Main = () => {
+const Main = ({children}) => {
     return (
         <main>
-            
+            {children}
         </main>
     );
 };

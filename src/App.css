@@ -19,7 +19,7 @@ nav > li{
   background-color: #333333;
   padding: 15px;
   display: grid; 
-  grid-template-columns: auto auto auto auto; 
+  grid-template-columns: auto auto auto auto auto; 
   justify-content: center;
   margin-left: auto !important;
   margin-right: auto !important;
