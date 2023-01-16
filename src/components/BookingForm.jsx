@@ -9,9 +9,17 @@ const BookingForm = () => {
     
     const [credentials, setCredentials] = useState({
         date: "",
+        time: "",
         guests: 0,
         occasion: ""
     });
+
+    const[availableTimes, setAvailableTime]= useState([
+        "17:00",
+        "18:00",
+        "19:00",
+        "20:00"
+    ])
 
     const [isSubmited, setIsubmited] = useState(false);
 
@@ -40,13 +48,13 @@ const BookingForm = () => {
             onChange={handleChange} 
             value={credentials.date}/>
             <label for="res-time">Choose time</label>
-            <select id="res-time ">
-                <option>17:00</option>
-                <option>18:00</option>
-                <option>19:00</option>
-                <option>20:00</option>
-                <option>21:00</option>
-                <option>22:00</option>
+            <select name="time" 
+            id="time"
+            onChange={handleChange}
+            value={credentials.time} >
+                {availableTimes.map((aTime)=>
+                    <option>{aTime}</option>
+                )}
             </select>
             <label for="guests">Number of guests</label>
             <input name="guests" 
