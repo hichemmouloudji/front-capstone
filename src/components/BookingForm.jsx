@@ -31,45 +31,51 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
 
     return (
 
-        <form className='bookingForm' onSubmit={handleSubmit}>
+        <>
 
-            <label for="res-date">Choose date</label>
-            <input name="date" 
-            type="date" 
-            id="date" 
-            onChange={handleChange} 
-            value={credentials.date}/>
-            <label for="res-time">Choose time</label>
-            <select name="time" 
-            id="time"
-            onChange={handleChange}
-            value={credentials.time} >
-                {availableTimes && availableTimes.map((aTime)=>
-                    <option>{aTime}</option>
-                )}
-            </select>
-            <label for="guests">Number of guests</label>
-            <input name="guests" 
-            type="number" 
-            placeholder="1" 
-            min="1" 
-            max="10" 
-            id="guests"
-            onChange={handleChange}
-            value={credentials.guests}  />
-            <label for="occasion">Occasion</label>
-            <select 
-            id="occasion"
-            name="occasion"
-            onChange={handleChange}
-            value={credentials.occasion}
-            >
-                <option>Birthday</option>
-                <option>Anniversary</option>
-            </select>
-            <input type="submit" value="Make Your reservation" />
+        <h1>Book Now</h1>
+        
+            <form className='bookingForm' onSubmit={handleSubmit}>
 
-        </form>
+                <label for="res-date">Choose date</label>
+                <input name="date" 
+                type="date" 
+                id="date" 
+                onChange={handleChange} 
+                value={credentials.date}/>
+                <label for="res-time">Choose time</label>
+                <select name="time" 
+                id="time"
+                onChange={handleChange}
+                value={credentials.time} >
+                    {availableTimes && availableTimes.map((aTime)=>
+                        <option>{aTime}</option>
+                    )}
+                </select>
+                <label for="guests">Number of guests</label>
+                <input name="guests" 
+                type="number" 
+                placeholder="1" 
+                min="1" 
+                max="10" 
+                id="guests"
+                onChange={handleChange}
+                value={credentials.guests}  />
+                <label for="occasion">Occasion</label>
+                <select 
+                id="occasion"
+                name="occasion"
+                onChange={handleChange}
+                value={credentials.occasion}
+                >
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                </select>
+                <input type="submit" value="Make Your reservation" />
+
+            </form>
+
+        </>
 
     );
 };
