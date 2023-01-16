@@ -110,3 +110,7 @@ footer p {
   max-width: 200px; 
   gap: 20px;
 }
+
+.booking > h1{
+  text-align: center;
+}

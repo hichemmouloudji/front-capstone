@@ -1,6 +1,6 @@
 // @flow 
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { toast } from 'react-toastify';
 
@@ -12,6 +12,10 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
         guests: 0,
         occasion: ""
     });
+
+    useEffect(() =>{
+        initializeTimes();
+    }, [])
 
     const [isSubmited, setIsubmited] = useState(false);
 
@@ -31,7 +35,7 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
 
     return (
 
-        <>
+        <React.Fragment className="booking">
 
         <h1>Book Now</h1>
         
@@ -77,7 +81,7 @@ const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
 
             </form>
 
-        </>
+        </React.Fragment>
 
     );
 };

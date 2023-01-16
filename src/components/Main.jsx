@@ -8,18 +8,16 @@ import HomePage from './HomePage';
 
 const Main = ({children}) => {
 
-    const initialTimes = [
-            "17:00",
-            "18:00",
-            "19:00",
-            "20:00"
-      ];
+    let initialTimes;
 
     const reducer = (state, action) => {
     switch (action.type) {
 
         case "INITIALIZE":
-        return initialTimes;
+        return ["17:00",
+        "18:00",
+        "19:00",
+        "20:00"];
 
         case "UPDATE":
         return state.filter(c  => c != action.time);
