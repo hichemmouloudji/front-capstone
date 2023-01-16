@@ -4,8 +4,7 @@ import { useState } from 'react';
 
 import { toast } from 'react-toastify';
 
-const BookingForm = () => {
-
+const BookingForm = ({availableTimes, updateTimes, initializeTimes}) => {
     
     const [credentials, setCredentials] = useState({
         date: "",
@@ -14,24 +13,17 @@ const BookingForm = () => {
         occasion: ""
     });
 
-    const[availableTimes, setAvailableTime]= useState([
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00"
-    ])
-
     const [isSubmited, setIsubmited] = useState(false);
 
     const handleChange = ({currentTarget}) =>{
         const {value, name}= currentTarget;
         setCredentials({ ...credentials, [name]: value });
-
     }
 
     const handleSubmit =  async event =>{
 
         event.preventDefault();
+        updateTimes(credentials.time);
 
         toast.success("Your table has been successfully reserved at: " + credentials.date);
 
@@ -52,7 +44,7 @@ const BookingForm = () => {
             id="time"
             onChange={handleChange}
             value={credentials.time} >
-                {availableTimes.map((aTime)=>
+                {availableTimes && availableTimes.map((aTime)=>
                     <option>{aTime}</option>
                 )}
             </select>

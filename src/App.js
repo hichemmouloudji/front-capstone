@@ -27,11 +27,6 @@ function App() {
       </Nav>
 
       <Main>
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/booking" element={<BookingPage />}></Route>
-          <Route path="/about" element={<AboutPage />}></Route>
-        </Routes>
       </Main>
 
       <ToastContainer />
