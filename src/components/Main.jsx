@@ -41,15 +41,17 @@ const Main = ({children}) => {
 
 
     return (
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/booking" 
-          element={<BookingPage availableTimes={availableTimes} 
-          updateTimes={updateTimes}
-          initializeTimes={initializeTimes}
-          />} ></Route>
-          <Route path="/about" element={<AboutPage />}></Route>
-        </Routes>
+        <main>
+            <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/booking" 
+            element={<BookingPage availableTimes={availableTimes} 
+            updateTimes={updateTimes}
+            initializeTimes={initializeTimes}
+            />} ></Route>
+            <Route path="/about" element={<AboutPage />}></Route>
+            </Routes>
+        </main>
     );
 };
 
