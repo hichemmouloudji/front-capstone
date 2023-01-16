@@ -26,6 +26,29 @@ nav > li{
   margin-top: 20px !important;
 }
 
+main > .ctc{
+  display: grid; 
+  padding: 15px;
+  grid-template-columns: 1fr fr; 
+  justify-content: center;
+  background: url("./assets/food-off.avif");
+  background-size: cover;
+  background-position: 0%;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+  height: 15vh;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 20px !important;
+  width: 80vw;
+}
+
+.ctc > h1, .ctc > p{
+  background: none;
+  color: white;
+  margin-left: 2vw;
+}
+
 nav > li{
   border-radius: 10px;
   width: 90vw;
@@ -73,7 +96,7 @@ footer p {
   }
 
 @media (max-width: 400px) {
-  nav > li, footer{
+  nav > li, footer, .ctc{
     grid-template-columns: auto; 
   }
 
