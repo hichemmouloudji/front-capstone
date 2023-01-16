@@ -11,14 +11,18 @@ header >img{
   height: 20vh;
 }
 
+#root{
+  width: 100vw !important;
+}
+
 nav > li{
   background-color: #333333;
   padding: 15px;
   display: grid; 
   grid-template-columns: auto auto auto auto; 
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
   margin-top: 20px !important;
 }
 
@@ -42,13 +46,6 @@ nav > li > ul > a{
   font-size: 18px;
 }
 
-@media (max-width: 400px) {
-  nav{
-    grid-template-columns: auto; 
-  }
-  
-  }
-
 footer {
   position:absolute;
   bottom:0;
@@ -67,3 +64,17 @@ footer p {
   border-top: 1px solid grey;
   padding-top: 5px;
 }
+
+@media (max-width: 650px) {
+  #root{
+    width: fit-content !important;
+  }
+  
+  }
+
+@media (max-width: 400px) {
+  nav > li, footer{
+    grid-template-columns: auto; 
+  }
+
+  }
