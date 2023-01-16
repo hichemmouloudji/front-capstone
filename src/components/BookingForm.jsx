@@ -1,4 +1,3 @@
-// @flow 
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 
@@ -25,7 +24,11 @@ const BookingForm = ({availableTimes, updateTimes, bookTimes, initializeTimes, s
         let todaysDate= year + "-" + month + "-" + day;
 
         setCredentials({...credentials, date : todaysDate});
-        initializeTimes(date);
+        try {
+            initializeTimes(date);
+        } catch (error) {
+            
+        }
         
     }, [])
 

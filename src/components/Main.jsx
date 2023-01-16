@@ -36,7 +36,7 @@ const Main = ({children}) => {
 
     const [availableTimes, dispatch] = useReducer(reducer, initialTimes);
 
-    const updateTimes = async (time) => {
+    const updateTimes = (time) => {
         try{
             let tmpAvailablesTimes= fetchAPI(time);
             dispatch({ type: "UPDATE", availableTimes: tmpAvailablesTimes });
