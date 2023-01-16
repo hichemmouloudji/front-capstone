@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { useState, useReducer } from 'react';
+import { useNavigate, useNavigation } from 'react-router-dom';
 
 import { Route, Routes } from 'react-router-dom';
 import AboutPage from './AboutPage';
 import BookingPage from './BookingPage';
 import HomePage from './HomePage';
 
-import {fetchAPI} from "../api.js"; 
+import {fetchAPI, submitAPI} from "../api.js"; 
+
 import { toast } from 'react-toastify';
+import ConfirmedBooking from './ConfirmedBooking';
 
 const Main = ({children}) => {
 
     let initialTimes;
+    const redirect= useNavigate();
 
     const reducer = (state, action) => {
     switch (action.type) {
@@ -56,6 +60,17 @@ const Main = ({children}) => {
 
     };
 
+    const submitForm= (formData) =>{
+        try{
+            let result= submitAPI(formData);
+            if(result){
+                redirect("/confirmedbooking")
+            }
+        }catch{
+            toast.error("Retry later !");
+        }
+    }
+
 
     return (
         <main>
@@ -66,8 +81,10 @@ const Main = ({children}) => {
             initializeTimes={initializeTimes}
             updateTimes={updateTimes}
             bookTimes={bookTimes}
+            submitForm={submitForm}
             />} ></Route>
             <Route path="/about" element={<AboutPage />}></Route>
+            <Route path="/confirmedbooking" element={<ConfirmedBooking />}></Route>
             </Routes>
         </main>
     );

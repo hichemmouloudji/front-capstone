@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { toast } from 'react-toastify';
 
-const BookingForm = ({availableTimes, updateTimes, bookTimes, initializeTimes}) => {
+const BookingForm = ({availableTimes, updateTimes, bookTimes, initializeTimes, submitForm}) => {
     
     const [credentials, setCredentials] = useState({
         date: "",
@@ -46,6 +46,7 @@ const BookingForm = ({availableTimes, updateTimes, bookTimes, initializeTimes}) 
 
         event.preventDefault();
         bookTimes(credentials.time);
+        submitForm(credentials);
 
         toast.success("Your table has been successfully reserved at: " + credentials.date);
 

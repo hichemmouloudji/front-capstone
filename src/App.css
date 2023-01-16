@@ -111,6 +111,11 @@ footer p {
   gap: 20px;
 }
 
-.booking > h1{
+.booking > h1, .confirmedBooking >h1{
   text-align: center !important;
+  font-size: 20px;
+}
+
+.confirmedBooking >h1{
+  color: rgb(95, 177, 12);
 }

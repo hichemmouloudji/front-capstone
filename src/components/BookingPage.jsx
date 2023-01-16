@@ -2,7 +2,7 @@
 import * as React from 'react';
 import BookingForm from './BookingForm';
 
-const BookingPage = ({availableTimes, updateTimes, bookTimes, initializeTimes}) => {
+const BookingPage = ({availableTimes, updateTimes, bookTimes, initializeTimes, submitForm}) => {
 
     return (
         <React.Fragment>
@@ -10,7 +10,8 @@ const BookingPage = ({availableTimes, updateTimes, bookTimes, initializeTimes}) 
             availableTimes={availableTimes} 
             updateTimes={updateTimes}
             initializeTimes={initializeTimes}
-            bookTimes={bookTimes}></BookingForm>
+            bookTimes={bookTimes}
+            submitForm={submitForm}></BookingForm>
         </React.Fragment>
     );
 };
